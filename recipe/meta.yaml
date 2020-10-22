@@ -1,18 +1,17 @@
 {% set name = "compyle" %}
-{% set version = "0.5" %}
+{% set version = "0.7" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: https://github.com/pypr/compyle/archive/v{{ version }}.tar.gz
-  sha256: eb8594d9116505ff4ad5111bef3f500a7ad22771a588e6d176048d2e9da355af
+  url: https://github.com/pypr/compyle/archive/{{ version }}.tar.gz
+  sha256: ce2a1fbaf9df3224cd988d5f82238c040c32456ad2cf289bd47e06237615374e
 
 build:
-  number: 2
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-  
+  number: 0
+  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
 requirements:
   build:
     - {{ compiler('cxx') }}
@@ -31,11 +30,11 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - python
     - pytools
-    
+
 test:
   imports:
     - compyle
-  
+
 about:
   home: https://github.com/pypr/compyle
   license: BSD-3-Clause
@@ -47,4 +46,4 @@ about:
 extra:
   recipe-maintainers:
     - rishi9699
-    
+
